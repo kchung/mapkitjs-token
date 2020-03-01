@@ -1,0 +1,28 @@
+{
+  "name": "mapkit-token",
+  "version": "0.1.0",
+  "description": "Tool to generate MapKit tokens",
+  "author": "Kevin Chung <kevin@chu.ng>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "dist/*.js"
+  ],
+  "bin": "./dist/cli.js",
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.3.7",
+    "@types/ms": "^0.7.31",
+    "@types/yargs": "^15.0.3",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "ms": "^2.1.2",
+    "yargs": "^15.1.0"
+  }
+}
