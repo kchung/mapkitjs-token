@@ -1,13 +1,12 @@
 {
-  "name": "mapkit-token",
+  "name": "mapkitjs-token",
   "version": "0.1.0",
-  "description": "Tool to generate MapKit tokens",
+  "description": "Generate MapKit JS tokens",
   "author": "Kevin Chung <kevin@chu.ng>",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "watch": "tsc -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "tsc -w"
   },
   "files": [
     "dist/*.js"
