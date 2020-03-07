@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "release": "release-it"
   },
   "files": [
     "dist/*.js"
@@ -16,6 +17,7 @@
     "@types/jsonwebtoken": "^8.3.7",
     "@types/ms": "^0.7.31",
     "@types/yargs": "^15.0.3",
+    "release-it": "^13.0.0",
     "typescript": "^3.7.5"
   },
   "dependencies": {
