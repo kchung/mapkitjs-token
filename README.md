@@ -36,7 +36,7 @@ Options:
              domain that should match the Origin header passed by a browser.
                                                                         [string]
   --verify   Test the generated token with MapKit servers to verify if valid
-                     [boolean] [default: false, verify token after it generates]
+                 [boolean] [default: true, will verify token after it generates]
   --stdout   Set to true to output only the token, suitable for piping
       [boolean] [default: false, by default, outputs extra data about the token]
 ```
