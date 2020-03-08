@@ -15,7 +15,6 @@ $ npx mapkitjs-token [options]
 
 Since we're dealing with private keys, you may feel safer compiling this tool yourself and running it locally (see [Compiling](#compiling)).
 
-
 ### Options
 ```
 Options:
