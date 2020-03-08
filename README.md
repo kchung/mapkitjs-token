@@ -1,9 +1,11 @@
 # MapKit JS Token Generator
 
-Generate long-lived tokens from the CLI that can be used with the MapKit JS's [`authorizationCallback`](https://developer.apple.com/documentation/mapkitjs/creating_and_using_tokens_with_mapkit_js#3138220):
+Generate long-lived tokens from the CLI that can be used with the MapKit JS's [`authorizationCallback`](https://developer.apple.com/documentation/mapkitjs/creating_and_using_tokens_with_mapkit_js#3138220).
 
-> Setting `authorizationCallback` to a function that returns a token as a string is useful for local development, or if you want to use a long-lived token with MapKit JS. Sign a token locally on your development machine with an expiration, then use the token directly in your code. Whether you are using a short-lived or long-lived token, setting the origin claim is always recommended.
+> Setting `authorizationCallback` to a function that returns a token as a string is useful for local development, or if you want to use a long-lived token with MapKit JS. Sign a token locally on your development machine with an expiration, then use the token directly in your code.
 
+### Features
+* Verifies if the token works against MapKit servers
 
 ## Usage
 
