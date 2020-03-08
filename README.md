@@ -48,7 +48,7 @@ See the [MapKit JS Documentation](https://developer.apple.com/documentation/mapk
 Generate a token with the default expiration (1 hour) and verify the token works:
 
 ```
-$ npx mapkitjs-token --kid ABC123DEFG --iss DEF123GHIJ --key secrets.p8 --verify
+$ npx mapkitjs-token --kid ABC123DEFG --iss DEF123GHIJ --key secrets.p8
 
 Token Information:
 Key Id (kid)  ABC123DEFG
@@ -64,7 +64,7 @@ Token         [token]
 Generate a token with a 10 year expiration, verify, and copy directly to clipboard (OSX):
 
 ```
-$ npx mapkitjs-token --kid ABC123DEFG --iss DEF123GHIJ --key secret.p8  --exp 10y --verify --stdout | pbcopy 
+$ npx mapkitjs-token --kid ABC123DEFG --iss DEF123GHIJ --key secret.p8  --exp 10y --stdout | pbcopy 
 ```
 
 ## Compiling
