@@ -5,14 +5,13 @@ Generate long-lived tokens from the CLI to be used with the MapKit JS [`authoriz
 > Setting `authorizationCallback` to a function that returns a token as a string is useful for local development, or if you want to use a long-lived token with MapKit JS. Sign a token locally on your development machine with an expiration, then use the token directly in your code. Whether you are using a short-lived or long-lived token, setting the origin claim is always recommended.
 
 
-
 ## Usage
 
 ```
 $ npx mapkitjs-token [options]
 ```
 
-Since we're dealing with private keys, you may feel safer to compile this tool yourself and run it locally (See the "Compiling" section in `README`).
+Since we're dealing with private keys, you may feel safer compiling this tool yourself and running it locally (see the "Compiling" section in `README`).
 
 
 ### Options
@@ -41,7 +40,7 @@ Options:
       [boolean] [default: false, by default, outputs extra data about the token]
 ```
 
-See the [MapKit JS Documentation](https://developer.apple.com/documentation/mapkitjs/creating_and_using_tokens_with_mapkit_js) for the full explanation of these options.
+See the [MapKit JS documentation](https://developer.apple.com/documentation/mapkitjs/creating_and_using_tokens_with_mapkit_js) for the full explanation of these options.
 
 ### Examples
 
