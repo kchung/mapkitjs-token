@@ -11,7 +11,7 @@ Generate long-lived tokens from the CLI to be used with the MapKit JS [`authoriz
 $ npx mapkitjs-token [options]
 ```
 
-Since we're dealing with private keys, you may feel safer compiling this tool yourself and running it locally (see the "Compiling" section in `README`).
+Since we're dealing with private keys, you may feel safer compiling this tool yourself and running it locally (see [Compiling](#compiling)).
 
 
 ### Options
@@ -88,5 +88,5 @@ Token         [generated token]
 ```
 $ npm ci
 $ npm run build
-$ node ./dist/cli.js
+$ node ./dist/cli.js [options]
 ```
