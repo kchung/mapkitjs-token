@@ -44,13 +44,13 @@ const argv = yargs
     },
     'iat': {
       default: '0',
-      defaultDescription: 'Current time (e.g 0 seconds from "now")',
+      defaultDescription: '0, current time (e.g 0 seconds from "now")',
       type: 'string',
       describe: 'The Issued At (iat), relative to now. Uses `zeit/ms` strings (e.g \'0\', \'2 days\', \'10 years\')',
     },
     'exp': {
       default: '1hr',
-      defaultDescription: '1 hour',
+      defaultDescription: '1hr, 1 hour expiration',
       describe: 'The Expiration Time (exp) relative to `iat`, using a `zeit/ms` string (e.g \'1hr\, \'2 days\', \'10 years\').',
       type: 'string',
     },
@@ -75,14 +75,14 @@ const argv = yargs
       type: 'string',
     },
     'verify': {
-      default: false,
-      defaultDescription: 'Verify token after it generates',
+      default: true,
+      defaultDescription: 'true, will verify token after it generates',
       describe: 'Test the generated token with MapKit servers to verify if valid',
       boolean: true,
     },
     'stdout': {
       default: false,
-      defaultDescription: 'By default, outputs extra data about the token',
+      defaultDescription: 'false, by default, outputs extra data about the token',
       describe: 'Set to true to output only the token, suitable for piping',
       boolean: true,
     },
