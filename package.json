@@ -6,6 +6,13 @@
   "homepage": "https://github.com/kchung/mapkitjs-token",
   "bugs": "https://github.com/kchung/mapkitjs-token/issues",
   "license": "MIT",
+  "keywords": [
+    "mapkit-js",
+    "mapkit",
+    "token",
+    "jwt",
+    "apple"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/kchung/mapkitjs-token"
