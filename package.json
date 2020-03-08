@@ -3,7 +3,13 @@
   "version": "0.1.0",
   "description": "Generate MapKit JS tokens",
   "author": "Kevin Chung <kevin@chun.gd>",
+  "homepage": "https://github.com/kchung/mapkitjs-token",
+  "bugs": "https://github.com/kchung/mapkitjs-token/issues",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kchung/mapkitjs-token"
+  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
