@@ -1,0 +1,9 @@
+{
+  "hooks": {
+    "after:bump": "npm run build"
+  },
+  "github": {
+    "release": true,
+    "releaseName": "${version}"
+  }
+}
