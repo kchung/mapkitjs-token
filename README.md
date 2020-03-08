@@ -27,17 +27,18 @@ Options:
                                                              [string] [required]
   --iat      The Issued At (iat), relative to now. Uses `zeit/ms` strings (e.g
              '0', '2 days', '10 years')
-                     [string] [default: Current time (e.g 0 seconds from "now")]
+                  [string] [default: 0, current time (e.g 0 seconds from "now")]
   --exp      The Expiration Time (exp) relative to `iat`, using a `zeit/ms`
-             string (e.g '1hr, '2 days', '10 years'). [string] [default: 1 hour]
+             string (e.g '1hr, '2 days', '10 years').
+                                      [string] [default: 1hr, 1 hour expiration]
   --key      MapKit private key file path                             [required]
   --origin   The Origin (origin) key. This key's value is a fully qualified
              domain that should match the Origin header passed by a browser.
                                                                         [string]
   --verify   Test the generated token with MapKit servers to verify if valid
-                            [boolean] [default: Verify token after it generates]
+                     [boolean] [default: false, verify token after it generates]
   --stdout   Set to true to output only the token, suitable for piping
-             [boolean] [default: By default, outputs extra data about the token]
+      [boolean] [default: false, by default, outputs extra data about the token]
 ```
 
 See the [MapKit JS Documentation](https://developer.apple.com/documentation/mapkitjs/creating_and_using_tokens_with_mapkit_js) for the full explanation of these options.
