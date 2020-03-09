@@ -26,11 +26,11 @@ Options:
              10-character Team ID, obtained from your developer account.
                                                              [string] [required]
   --iat      The Issued At (iat), relative to now. Uses `zeit/ms` strings (e.g
-             '0', '2 days', '10 years')
+             '0', '2d', '1y')
                   [string] [default: 0, current time (e.g 0 seconds from "now")]
   --exp      The Expiration Time (exp) relative to `iat`, using a `zeit/ms`
-             string (e.g '1hr, '2 days', '10 years').
-                                      [string] [default: 1hr, 1 hour expiration]
+             string (e.g '1hr, '2d', '1y').
+                                    [string] [default: 364d, 364 day expiration]
   --key      MapKit private key file path                             [required]
   --origin   The Origin (origin) key. This key's value is a fully qualified
              domain that should match the Origin header passed by a browser.

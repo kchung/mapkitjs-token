@@ -46,12 +46,12 @@ const argv = yargs
       default: '0',
       defaultDescription: '0, current time (e.g 0 seconds from "now")',
       type: 'string',
-      describe: 'The Issued At (iat), relative to now. Uses `zeit/ms` strings (e.g \'0\', \'2 days\', \'10 years\')',
+      describe: 'The Issued At (iat), relative to now. Uses `zeit/ms` strings (e.g \'0\', \'2d\', \'1y\')',
     },
     'exp': {
-      default: '1hr',
-      defaultDescription: '1hr, 1 hour expiration',
-      describe: 'The Expiration Time (exp) relative to `iat`, using a `zeit/ms` string (e.g \'1hr\, \'2 days\', \'10 years\').',
+      default: '364d',
+      defaultDescription: '364d, 364 day expiration',
+      describe: 'The Expiration Time (exp) relative to `iat`, using a `zeit/ms` string (e.g \'1hr\, \'2d\', \'1y\').',
       type: 'string',
     },
     'key': {
