@@ -1,6 +1,6 @@
 {
   "name": "mapkitjs-token",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Generate MapKit JS tokens",
   "author": "Kevin Chung <kevin@chun.gd>",
   "homepage": "https://github.com/kchung/mapkitjs-token",
