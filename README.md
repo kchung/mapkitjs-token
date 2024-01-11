@@ -39,6 +39,9 @@ Options:
   --exp      The Expiration Time (exp) relative to `iat`, using a `zeit/ms`
              string (e.g '1hr, '2d', '1y').
                                     [string] [default: 364d, 364 day expiration]
+  --sub      The subject public claim key. This value could for example be your 
+             registered Service ID. Needed for WeatherKit tokens.
+                                                                        [string]
   --key      MapKit private key file path                             [required]
   --origin   The Origin (origin) key. This key's value is a fully qualified
              domain that should match the Origin header passed by a browser.
@@ -64,6 +67,7 @@ Issuer (iss)  DEF123GHIJ
 Issued (iat)  1583626697 (Sat Mar 07 2020 16:18:17 GMT-0800 (Pacific Standard Time))
 Expire (exp)  1583630297 (Sat Mar 07 2020 17:18:17 GMT-0800 (Pacific Standard Time))
 Expires In    1 hour (3600s)
+Sub           none
 Origin        none
 Valid         valid
 Token         [generated token]
@@ -86,6 +90,7 @@ Issuer (iss)  DEF123GHIJ
 Issued (iat)  1583627770 (Sat Mar 07 2020 16:36:10 GMT-0800 (Pacific Standard Time))
 Expire (exp)  1836088570 (Tue Mar 07 2028 16:36:10 GMT-0800 (Pacific Standard Time))
 Expires In    2922 days (252460800s)
+Sub           none
 Origin        https://mywebsite.org
 Valid         skipped
 Token         [generated token]
