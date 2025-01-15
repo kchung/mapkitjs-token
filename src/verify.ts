@@ -11,8 +11,13 @@ const BOOTSTRAP_PATH = 'https://cdn.apple-mapkit.com/ma/bootstrap';
  * @param token JWT token
  * @param [origin = 'https://localhost'] Issuing origin
  * @param [version = '5.38.1'] MapKitJS version
+ * @throws Error if the token is not valid
  */
-export default function verify(token: string, origin = 'https://localhost', version = '5.38.1') {
+export default function verify(
+  token: string, 
+  origin = 'https://localhost', 
+  version = '5.38.1'
+): Promise<true> {
   return new Promise((resolve, reject) => {
     const query = querystring.stringify({
       apiVersion: 2,
@@ -32,9 +37,9 @@ export default function verify(token: string, origin = 'https://localhost', vers
     https
       .get(path, options, (res) => {
         if (res.statusCode === 200) {
-          resolve();
+          resolve(true);
         } else {
-          reject();
+          reject(new Error(`Unexpected status code: ${res.statusCode}`));
         }
       })
       .on('error', reject);
