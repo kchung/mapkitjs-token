@@ -55,7 +55,7 @@ const argv = yargs
       type: 'string',
     },
     'sub': {
-      describe: 'The subject public claim key. This value could for example be your registered Service ID. Needed for WeatherKit tokens.',
+      describe: 'The subject public claim key. This value could for example be your registered Service ID. Needed for WeatherKit tokens. (e.g "com.example.weatherkit-client")',
       type: 'string',
     },
     'key': {
