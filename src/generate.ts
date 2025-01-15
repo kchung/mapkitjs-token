@@ -4,6 +4,7 @@ interface PayloadConfig {
   iss: string;
   iat: number;
   exp: number;
+  sub?: string;
   origin?: string;
 }
 
@@ -36,6 +37,10 @@ export default function generate(options: GenerateOptions) {
     iat: options.iat,
     exp: options.exp,
   };
+
+  if (options.sub) {
+    payload.sub = options.sub;
+  }
 
   if (options.origin) {
     payload.origin = options.origin;

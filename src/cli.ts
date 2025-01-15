@@ -54,6 +54,10 @@ const argv = yargs
       describe: 'The Expiration Time (exp) relative to `iat`, using a `zeit/ms` string (e.g \'1hr\, \'2d\', \'1y\').',
       type: 'string',
     },
+    'sub': {
+      describe: 'The subject public claim key. This value could for example be your registered Service ID. Needed for WeatherKit tokens. (e.g "com.example.weatherkit-client")',
+      type: 'string',
+    },
     'key': {
       demandOption: true,
       describe: 'MapKit private key file path',
@@ -113,6 +117,7 @@ function output(args: RunOptions, token: string, valid: null | boolean) {
     ['Issued (iat)', args.iat, `(${new Date(args.iat * 1000)})`],
     ['Expire (exp)', args.exp, `(${new Date(args.exp * 1000)})`],
     ['Expires In', `${ms(milliseconds, { long: true })} (${seconds}s)`],
+    ['Sub', args?.sub || chalk.yellow('none')],
     ['Origin', args?.origin || chalk.yellow('none')],
   ];
 
