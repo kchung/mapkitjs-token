@@ -1,0 +1,12 @@
+name: Lint commit
+on: pull_request
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  lint:
+    name: Lint commit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: wagoid/commitlint-github-action@v6
