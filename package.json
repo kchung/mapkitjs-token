@@ -24,7 +24,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "test": "vitest"
   },
   "files": [
     "dist/*.js"
@@ -35,7 +36,8 @@
     "@types/ms": "^0.7.31",
     "@types/yargs": "^15.0.3",
     "conventional-changelog-conventionalcommits": "^8.0.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "vitest": "^1.6.1"
   },
   "dependencies": {
     "chalk": "^3.0.0",
