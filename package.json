@@ -1,11 +1,16 @@
 {
   "name": "mapkitjs-token",
-  "version": "1.1.1",
+  "version": "0.0.0-semantic-release",
   "description": "Generate MapKit JS tokens",
   "author": "Kevin Chung <kevin@chun.gd>",
   "homepage": "https://github.com/kchung/mapkitjs-token",
-  "bugs": "https://github.com/kchung/mapkitjs-token/issues",
+  "bugs": {
+    "url": "https://github.com/kchung/mapkitjs-token/issues"
+  },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "mapkit-js",
     "mapkit",
@@ -15,12 +20,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/kchung/mapkitjs-token"
+    "url": "git+https://github.com/kchung/mapkitjs-token.git"
   },
   "scripts": {
     "build": "tsc",
-    "watch": "tsc -w",
-    "release": "release-it"
+    "watch": "tsc -w"
   },
   "files": [
     "dist/*.js"
@@ -30,7 +34,7 @@
     "@types/jsonwebtoken": "^8.3.7",
     "@types/ms": "^0.7.31",
     "@types/yargs": "^15.0.3",
-    "release-it": "^13.0.0",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
     "typescript": "^3.7.5"
   },
   "dependencies": {
