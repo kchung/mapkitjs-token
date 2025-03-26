@@ -12,8 +12,12 @@ const BOOTSTRAP_PATH = 'https://cdn.apple-mapkit.com/ma/bootstrap';
  * @param [origin = 'https://localhost'] Issuing origin
  * @param [version = '5.38.1'] MapKitJS version
  */
-export default function verify(token: string, origin = 'https://localhost', version = '5.38.1') {
-  return new Promise((resolve, reject) => {
+export default function verify(
+  token: string,
+  origin = 'https://localhost',
+  version = '5.38.1'
+) {
+  return new Promise<boolean>((resolve, reject) => {
     const query = querystring.stringify({
       apiVersion: 2,
       mkjsVersion: version,
@@ -32,11 +36,11 @@ export default function verify(token: string, origin = 'https://localhost', vers
     https
       .get(path, options, (res) => {
         if (res.statusCode === 200) {
-          resolve();
+          resolve(true);
         } else {
-          reject();
+          reject(false);
         }
       })
-      .on('error', reject);
+      .on('error', () => reject(false));
   });
 }
