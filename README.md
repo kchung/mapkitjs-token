@@ -4,11 +4,11 @@ Generate long-lived tokens from the CLI that can be used with the MapKit JS's [`
 
 > Setting `authorizationCallback` to a function that returns a token as a string is useful for local development, or if you want to use a long-lived token with MapKit JS. Sign a token locally on your development machine with an expiration, then use the token directly in your code.
 >
-> ```
+> ```js
 > mapkit.init({
->    authorizationCallback(done) {
->        done('your-generated-token-string-here');
->    },
+>   authorizationCallback(done) {
+>     done('your-generated-token-string-here');
+>   },
 > });
 > ```
 
