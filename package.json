@@ -34,7 +34,7 @@
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.9",
     "@types/ms": "^2.1.0",
-    "@types/yargs": "^15.0.3",
+    "@types/yargs": "^17.0.33",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "typescript": "^5.8.2",
     "vitest": "^3.0.9"
@@ -43,6 +43,6 @@
     "chalk": "^3.0.0",
     "jsonwebtoken": "^9.0.2",
     "ms": "^2.1.2",
-    "yargs": "^15.1.0"
+    "yargs": "^17.7.2"
   }
 }
