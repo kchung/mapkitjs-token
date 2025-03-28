@@ -32,7 +32,7 @@
   ],
   "bin": "./dist/cli.js",
   "devDependencies": {
-    "@types/jsonwebtoken": "^8.3.7",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/ms": "^2.1.0",
     "@types/yargs": "^15.0.3",
     "conventional-changelog-conventionalcommits": "^8.0.0",
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "chalk": "^3.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.2",
     "ms": "^2.1.2",
     "yargs": "^15.1.0"
   }
