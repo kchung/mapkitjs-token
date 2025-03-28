@@ -30,7 +30,9 @@
   "files": [
     "dist/*.js"
   ],
-  "bin": "./dist/cli.js",
+  "bin": {
+    "mapkitjs-token": "dist/cli.js"
+  },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.9",
     "@types/ms": "^2.1.0",
