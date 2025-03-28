@@ -75,10 +75,10 @@ Valid         valid
 Token         [generated token]
 ```
 
-Generate a token with a 10 year expiration, verify, and copy directly to clipboard (macOS via `pbcopy`):
+Generate a token to `stdout`, verify, and copy directly to clipboard (macOS via `pbcopy`):
 
 ```
-$ npx mapkitjs-token --kid ABC123DEFG --iss DEF123GHIJ --key ./secret.p8  --exp 10y --stdout | pbcopy
+$ npx mapkitjs-token --kid ABC123DEFG --iss DEF123GHIJ --key ./secret.p8 --stdout | pbcopy
 ```
 
 Generate a token with a 8 year expiration, add an origin, and skip verification:
