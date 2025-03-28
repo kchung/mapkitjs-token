@@ -33,10 +33,10 @@
   "bin": "./dist/cli.js",
   "devDependencies": {
     "@types/jsonwebtoken": "^8.3.7",
-    "@types/ms": "^0.7.31",
+    "@types/ms": "^2.1.0",
     "@types/yargs": "^15.0.3",
     "conventional-changelog-conventionalcommits": "^8.0.0",
-    "typescript": "^3.7.5",
+    "typescript": "^5.8.2",
     "vitest": "^3.0.9"
   },
   "dependencies": {
