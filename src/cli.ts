@@ -1,105 +1,114 @@
 #!/usr/bin/env node
 
 import fs from 'fs';
-import ms from 'ms';
+import ms, { type StringValue } from 'ms';
 import yargs from 'yargs';
 import chalk from 'chalk';
-import generate, { GenerateOptions } from './generate';
+import generate, { type GenerateOptions } from './generate';
 import verify from './verify';
 
 type RunOptions = GenerateOptions & {
   verify: boolean;
   stdout: boolean;
-}
+};
 
-const DOC_URL = 'https://developer.apple.com/documentation/mapkitjs/creating_a_maps_identifier_and_a_private_key';
+const DOC_URL =
+  'https://developer.apple.com/documentation/mapkitjs/creating_a_maps_identifier_and_a_private_key';
 
 const now = new Date();
 
-const argv = yargs
-  .options({
-    'alg': {
-      default: 'ES256',
-      defaultDescription: 'ES256',
-      type: 'string',
-      hidden: true,
-      describe: 'The encryption algorithm (alg) used to encrypt the token. ES256 should be used to encrypt your token, and the value for this field should be "ES256".'
+const argv = yargs.options({
+  alg: {
+    default: 'ES256',
+    defaultDescription: 'ES256',
+    type: 'string',
+    hidden: true,
+    describe:
+      'The encryption algorithm (alg) used to encrypt the token. ES256 should be used to encrypt your token, and the value for this field should be "ES256".',
+  },
+  kid: {
+    type: 'string',
+    describe:
+      'A 10-character key identifier (kid) key, obtained from your Apple Developer account',
+    demandOption: true,
+  },
+  typ: {
+    default: 'JWT',
+    defaultDescription: 'JWT',
+    type: 'string',
+    hidden: true,
+    describe: 'A type parameter (typ), with the value "JWT".',
+  },
+  iss: {
+    type: 'string',
+    describe:
+      "The Issuer (iss) registered claim key. This key's value is your 10-character Team ID, obtained from your developer account.",
+    demandOption: true,
+  },
+  iat: {
+    default: '0',
+    defaultDescription: '0, current time (e.g 0 seconds from "now")',
+    type: 'string',
+    describe:
+      "The Issued At (iat), relative to now. Uses `zeit/ms` strings (e.g '0', '2d', '1y')",
+    coerce(iat: StringValue) {
+      const milliseconds = now.getTime() + ms(iat);
+      return Math.round(milliseconds / 1000);
     },
-    'kid': {
-      type: 'string',
-      describe: 'A 10-character key identifier (kid) key, obtained from your Apple Developer account',
-      demandOption: true,
+  },
+  exp: {
+    default: '364d',
+    defaultDescription: '364d, 364 day expiration',
+    describe:
+      "The Expiration Time (exp) relative to `iat`, using a `zeit/ms` string (e.g '1hr, '2d', '1y').",
+    type: 'string',
+    coerce(exp: StringValue) {
+      const milliseconds = now.getTime() + ms(exp);
+      return Math.round(milliseconds / 1000);
     },
-    'typ': {
-      default: 'JWT',
-      defaultDescription: 'JWT',
-      type: 'string',
-      hidden: true,
-      describe: 'A type parameter (typ), with the value "JWT".',
-    },
-    'iss': {
-      type: 'string',
-      describe: 'The Issuer (iss) registered claim key. This key\'s value is your 10-character Team ID, obtained from your developer account.',
-      demandOption: true,
-    },
-    'iat': {
-      default: '0',
-      defaultDescription: '0, current time (e.g 0 seconds from "now")',
-      type: 'string',
-      describe: 'The Issued At (iat), relative to now. Uses `zeit/ms` strings (e.g \'0\', \'2d\', \'1y\')',
-    },
-    'exp': {
-      default: '364d',
-      defaultDescription: '364d, 364 day expiration',
-      describe: 'The Expiration Time (exp) relative to `iat`, using a `zeit/ms` string (e.g \'1hr\, \'2d\', \'1y\').',
-      type: 'string',
-    },
-    'sub': {
-      describe: 'The subject public claim key. This value could for example be your registered Service ID. Needed for WeatherKit tokens. (e.g "com.example.weatherkit-client")',
-      type: 'string',
-    },
-    'key': {
-      demandOption: true,
-      describe: 'MapKit private key file path',
-      coerce(file) {
-        if (!file) {
-          throw new Error('No key file path');
-        }
+  },
+  sub: {
+    describe:
+      'The subject public claim key. This value could for example be your registered Service ID. Needed for WeatherKit tokens. (e.g "com.example.weatherkit-client")',
+    type: 'string',
+  },
+  key: {
+    demandOption: true,
+    describe: 'MapKit private key file path',
+    coerce(file) {
+      if (!file) {
+        throw new Error('No key file path');
+      }
 
-        const contents = fs.readFileSync(file, { encoding: 'utf8' });
-        if (!contents.startsWith('-----BEGIN PRIVATE KEY-----') || !contents.endsWith('-----END PRIVATE KEY-----')) {
-          throw new Error(`Key file likely invalid (see ${DOC_URL})`);
-        }
+      const contents = fs.readFileSync(file, { encoding: 'utf8' });
+      if (
+        !contents.startsWith('-----BEGIN PRIVATE KEY-----') ||
+        !contents.endsWith('-----END PRIVATE KEY-----')
+      ) {
+        throw new Error(`Key file likely invalid (see ${DOC_URL})`);
+      }
 
-        return contents;
-      },
+      return contents;
     },
-    'origin': {
-      describe: 'The Origin (origin) key. This key\'s value is a fully qualified domain that should match the Origin header passed by a browser.',
-      type: 'string',
-    },
-    'verify': {
-      default: true,
-      defaultDescription: 'true, will verify token after it generates',
-      describe: 'Test the generated token with MapKit servers to verify if valid',
-      boolean: true,
-    },
-    'stdout': {
-      default: false,
-      defaultDescription: 'false, by default, outputs extra data about the token',
-      describe: 'Set to true to output only the token, suitable for piping',
-      boolean: true,
-    },
-  })
-  .coerce('iat', (iat: string) => {
-    const milliseconds = now.getTime() + ms(iat);
-    return Math.round(milliseconds / 1000);
-  })
-  .coerce('exp', (exp: string) => {
-    const milliseconds = now.getTime() + ms(exp);
-    return Math.round(milliseconds / 1000);
-  })
-  .argv;
+  },
+  origin: {
+    describe:
+      "The Origin (origin) key. This key's value is a fully qualified domain that should match the Origin header passed by a browser.",
+    type: 'string',
+  },
+  verify: {
+    default: true,
+    defaultDescription: 'true, will verify token after it generates',
+    describe: 'Test the generated token with MapKit servers to verify if valid',
+    boolean: true,
+  },
+  stdout: {
+    default: false,
+    defaultDescription: 'false, by default, outputs extra data about the token',
+    describe: 'Set to true to output only the token, suitable for piping',
+    boolean: true,
+  },
+}).argv;
 
 /**
  * Output the result with the configurations used
@@ -182,6 +191,8 @@ async function run(args: RunOptions) {
   } else {
     console.log(token);
   }
+
+  process.exit(0);
 }
 
-run(argv);
+run(argv as unknown as RunOptions);
