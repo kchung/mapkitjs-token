@@ -13,7 +13,8 @@ Generate long-lived tokens from the CLI that can be used with the MapKit JS's [`
 > ```
 
 ### Features
-* Verifies if the token works against MapKit servers
+
+- Verifies if the token works against MapKit servers
 
 ## Usage
 
@@ -24,6 +25,7 @@ $ npx mapkitjs-token [options]
 Since we're dealing with private keys, you may feel safer compiling this tool yourself and running it locally (see [Compiling](#compiling)).
 
 ### Options
+
 ```
 Options:
   --help     Show help                                                 [boolean]
@@ -39,7 +41,7 @@ Options:
   --exp      The Expiration Time (exp) relative to `iat`, using a `zeit/ms`
              string (e.g '1hr, '2d', '1y').
                                     [string] [default: 364d, 364 day expiration]
-  --sub      The subject public claim key. This value could for example be your 
+  --sub      The subject public claim key. This value could for example be your
              registered Service ID. Needed for WeatherKit tokens.
                                                                         [string]
   --key      MapKit private key file path                             [required]
@@ -56,7 +58,7 @@ See the [MapKit JS documentation](https://developer.apple.com/documentation/mapk
 
 ### Examples
 
-Generate a token with the default expiration (1 hour) and verify the token works:
+Generate a token with the default expiration (1 year) and verify the token works:
 
 ```
 $ npx mapkitjs-token --kid ABC123DEFG --iss DEF123GHIJ --key ./secret.p8
@@ -66,7 +68,7 @@ Key Id (kid)  ABC123DEFG
 Issuer (iss)  DEF123GHIJ
 Issued (iat)  1583626697 (Sat Mar 07 2020 16:18:17 GMT-0800 (Pacific Standard Time))
 Expire (exp)  1583630297 (Sat Mar 07 2020 17:18:17 GMT-0800 (Pacific Standard Time))
-Expires In    1 hour (3600s)
+Expires In    364 days (31449600s)
 Sub           none
 Origin        none
 Valid         valid
@@ -76,13 +78,13 @@ Token         [generated token]
 Generate a token with a 10 year expiration, verify, and copy directly to clipboard (macOS via `pbcopy`):
 
 ```
-$ npx mapkitjs-token --kid ABC123DEFG --iss DEF123GHIJ --key ./secret.p8  --exp 10y --stdout | pbcopy 
+$ npx mapkitjs-token --kid ABC123DEFG --iss DEF123GHIJ --key ./secret.p8  --exp 10y --stdout | pbcopy
 ```
 
 Generate a token with a 8 year expiration, add an origin, and skip verification:
 
 ```
-$ npx mapkitjs-token --kid ABC123DEFG --iss DEF123GHIJ --key ./secret.p8 --exp=8y --origin https://mywebsite.org --verify=false
+$ npx mapkitjs-token --kid ABC123DEFG --iss DEF123GHIJ --key ./secret.p8 --exp=8y --origin https://example.com --verify=false
 
 Token Information:
 Key Id (kid)  ABC123DEFG
@@ -91,13 +93,12 @@ Issued (iat)  1583627770 (Sat Mar 07 2020 16:36:10 GMT-0800 (Pacific Standard Ti
 Expire (exp)  1836088570 (Tue Mar 07 2028 16:36:10 GMT-0800 (Pacific Standard Time))
 Expires In    2922 days (252460800s)
 Sub           none
-Origin        https://mywebsite.org
+Origin        https://example.com
 Valid         skipped
 Token         [generated token]
 ```
 
 ## Compiling
-
 
 ```
 $ npm ci
