@@ -191,6 +191,8 @@ async function run(args: RunOptions) {
   } else {
     console.log(token);
   }
+
+  process.exit(0);
 }
 
 run(argv as unknown as RunOptions);
