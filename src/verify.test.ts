@@ -1,12 +1,4 @@
-import {
-  describe,
-  it,
-  expect,
-  vi,
-  beforeEach,
-  MockedFunction,
-  Mocked,
-} from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import https from 'https';
 import http from 'http';
 import verify from './verify';
@@ -29,9 +21,9 @@ describe('verify', () => {
   it('should resolve when status code is 200', async () => {
     vi.mocked(https.get).mockImplementation(
       (
-        path: string,
-        options: https.RequestOptions,
-        callback: (res: http.IncomingMessage) => void
+        url: string | URL,
+        options: https.RequestOptions | undefined,
+        callback?: (res: http.IncomingMessage) => void
       ) => {
         const mockResponse = {
           statusCode: 200,
@@ -41,7 +33,9 @@ describe('verify', () => {
           on: vi.fn(),
         } as unknown as http.ClientRequest;
 
-        callback(mockResponse as http.IncomingMessage);
+        if (callback) {
+          callback(mockResponse as http.IncomingMessage);
+        }
         return mockClientRequest;
       }
     );
@@ -53,9 +47,9 @@ describe('verify', () => {
   it('should reject when status code is not 200', async () => {
     vi.mocked(https.get).mockImplementation(
       (
-        path: string,
-        options: https.RequestOptions,
-        callback: (res: http.IncomingMessage) => void
+        url: string | URL,
+        options: https.RequestOptions | undefined,
+        callback?: (res: http.IncomingMessage) => void
       ) => {
         const mockResponse = {
           statusCode: 401,
@@ -65,7 +59,9 @@ describe('verify', () => {
           on: vi.fn(),
         } as unknown as http.ClientRequest;
 
-        callback(mockResponse as http.IncomingMessage);
+        if (callback) {
+          callback(mockResponse as http.IncomingMessage);
+        }
         return mockClientRequest;
       }
     );
@@ -77,9 +73,9 @@ describe('verify', () => {
   it('should reject on network error', async () => {
     vi.mocked(https.get).mockImplementation(
       (
-        path: string,
-        options: https.RequestOptions,
-        callback: (res: http.IncomingMessage) => void
+        url: string | URL,
+        options: https.RequestOptions | undefined,
+        callback?: (res: http.IncomingMessage) => void
       ) => {
         const mockClientRequest = {
           on: (event: string, handler: (error: Error) => void) => {
@@ -100,9 +96,9 @@ describe('verify', () => {
   it('should use default values when not provided', async () => {
     vi.mocked(https.get).mockImplementation(
       (
-        path: string,
-        options: https.RequestOptions,
-        callback: (res: http.IncomingMessage) => void
+        url: string | URL,
+        options: https.RequestOptions | undefined,
+        callback?: (res: http.IncomingMessage) => void
       ) => {
         const mockResponse = {
           statusCode: 200,
@@ -112,7 +108,9 @@ describe('verify', () => {
           on: vi.fn(),
         } as unknown as http.ClientRequest;
 
-        callback(mockResponse as http.IncomingMessage);
+        if (callback) {
+          callback(mockResponse as http.IncomingMessage);
+        }
         return mockClientRequest;
       }
     );
