@@ -15,7 +15,6 @@ permissions:
   id-token: write # to enable use of OIDC for npm provenance
 jobs:
   release:
-    name: Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
