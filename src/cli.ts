@@ -2,10 +2,11 @@
 
 import fs from 'fs';
 import ms, { type StringValue } from 'ms';
-import yargs from 'yargs';
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
 import chalk from 'chalk';
-import generate, { type GenerateOptions } from './generate';
-import verify from './verify';
+import generate, { type GenerateOptions } from './generate.js';
+import verify from './verify.js';
 
 type RunOptions = GenerateOptions & {
   verify: boolean;
@@ -17,7 +18,7 @@ const DOC_URL =
 
 const now = new Date();
 
-const argv = yargs.options({
+const argv = yargs(hideBin(process.argv)).options({
   alg: {
     default: 'ES256',
     defaultDescription: 'ES256',

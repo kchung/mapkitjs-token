@@ -8,6 +8,7 @@
     "url": "https://github.com/kchung/mapkitjs-token/issues"
   },
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
