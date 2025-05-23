@@ -1,5 +1,5 @@
-import generate from './generate';
-import verify from './verify';
+import generate from './generate.js';
+import verify from './verify.js';
 
 export {
   generate,
